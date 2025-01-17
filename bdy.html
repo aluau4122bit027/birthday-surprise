@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #ff7e5f, #feb47b);
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 4em;
+            margin-top: 50px;
+        }
+
+        .birthday-message {
+            font-size: 2em;
+            margin: 30px;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        .countdown {
+            font-size: 2.5em;
+            margin-top: 40px;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .balloon {
+            position: fixed;
+            top: -100px;
+            z-index: -1;
+            animation: floatBalloon 10s linear infinite;
+        }
+
+        .balloon img {
+            width: 70px;
+            height: auto;
+        }
+
+        @keyframes floatBalloon {
+            0% { top: -100px; left: 10%; }
+            50% { top: 100%; left: 50%; }
+            100% { top: -100px; left: 90%; }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+   
+    <h1>🎉 Happy Birthday, [fazil]! 🎉</h1>
+
+    <div class="birthday-message">
+        Wishing you a year full of love, joy, and adventures. I am so lucky to have you in my life. Here's to more memories together!
+    </div>
+
+    <div id="countdown" class="countdown"></div>
+
+    <!-- Balloon animation (you can add more balloons or customize it) -->
+    <div class="balloon">
+        <img src="https://img.icons8.com/ios/50/ffffff/balloon.png" alt="Balloon">
+    </div>
+
+    <script>
+        // Get the current date
+        const today = new Date();
+        // Set his next birthday (use the year of the next birthday)
+        const nextBirthday = new Date(today.getFullYear() + 1, 0, 17); // Replace 0 with his birth month (0 is January) and 17 with his birth day
+
+        // Function to calculate the time remaining
+        function calculateTimeRemaining() {
+            const timeRemaining = nextBirthday - today;
+            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+            document.getElementById('countdown').innerHTML = Your next birthday is in: ${days}d ${hours}h ${minutes}m ${seconds}s;
+        }
+
+        // Update countdown every second
+        setInterval(calculateTimeRemaining, 1000);
+    </script>
+
+</body>
+</html>
